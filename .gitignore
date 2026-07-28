@@ -1,0 +1,11 @@
+osrm-data/
+node_modules/
+dist/
+__pycache__/
+*.pyc
+backend/ml_models/*.csv
+backend/ml_models/models/*.pkl
+backend/local_dev.db
+.env
+.env.local
+osrm-deploy/*.osm.pbf

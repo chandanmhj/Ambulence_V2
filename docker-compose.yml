@@ -1,0 +1,29 @@
+version: "3.8"
+
+# OSRM routing engine for Bangalore.
+# The .osm.pbf extract + preprocessing MUST be done once before `docker compose up`.
+# See README.md "Step 2: Prepare OSRM" for the exact commands.
+
+services:
+  osrm:
+    image: osrm/osrm-backend
+    container_name: ambulance_osrm
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./osrm-data:/data
+    command: osrm-routed --algorithm mld /data/bangalore.osrm
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    container_name: ambulance_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - OSRM_URL=http://osrm:5000
+    depends_on:
+      - osrm
+    restart: unless-stopped
