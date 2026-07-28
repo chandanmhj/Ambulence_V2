@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://your-app.vercel.app/sitemap.xml
+Sitemap: https://ambulence-v2.vercel.app/sitemap.xml
