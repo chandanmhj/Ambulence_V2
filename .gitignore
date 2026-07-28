@@ -8,4 +8,3 @@ backend/ml_models/models/*.pkl
 backend/local_dev.db
 .env
 .env.local
-osrm-deploy/*.osm.pbf
